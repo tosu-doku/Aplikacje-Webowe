@@ -1,0 +1,219 @@
+:root {
+  --main-yellow: #fcee0a;
+  --main-dark-yellow: #d2c800;
+  --main-red-edgerunners: #ff1438;
+}
+/* body.body-home {
+  background-image: url(/assets/cyberpunk-background);
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+} */
+body {
+  background-color: var(--main-yellow);
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-mono-font {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    "header header"
+    "content video"
+    "video2 content2"
+    "footer footer";
+  min-height: 1em;
+}
+body.gallery-body .container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-areas:
+    "header"
+    "gallery"
+    "footer";
+}
+body.contact-body .container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    "header header"
+    "text input"
+    "footer footer";
+}
+.container div.header {
+  grid-area: header;
+  text-align: center;
+  /* background-color: black; */
+  background-image: linear-gradient(to top, var(--main-yellow), rgb(57, 48, 0));
+  color: var(--main-yellow);
+  margin-top: 0;
+  left: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container div.content {
+  grid-area: content;
+  margin: 10px;
+  text-align: right;
+  align-content: center;
+}
+.container div.content2 {
+  grid-area: content2;
+  margin: 10px;
+  text-align: right;
+  align-content: center;
+}
+.container div.footer {
+  grid-area: footer;
+  background-color: none;
+  /* background-image: linear-gradient(to bottom, var(--main-yellow), black); */
+  display: flex;
+  flex-direction: row-reverse;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.clock {
+  /* width: 100%; */
+  display: flex;
+}
+.container div.video {
+  grid-area: video;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--main-red-edgerunners);
+}
+.container div.video img {
+  width: 100px;
+  height: 100px;
+}
+.container div.video2 {
+  grid-area: video2;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--main-red-edgerunners);
+}
+.container div.video img {
+  width: 100px;
+  height: 100px;
+}
+
+/* gallery */
+.gallery-row {
+  grid-area: gallery;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* gap: 8px; */
+  margin: 10px;
+  margin-left: 20px;
+}
+
+.gallery-row img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 24%;
+  border-radius: 10px;
+}
+.gallery-row img:hover {
+  scale: 1.2;
+  transition: 0.3s;
+}
+.gallery-row img:active {
+  scale: 3;
+  transition: 0.3s;
+}
+.gallery-row iframe {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 48.7%;
+  /* height: auto; */
+  border-radius: 10px;
+}
+
+/* contact */
+/* .containter-contact {
+  
+} */
+.text {
+  grid-area: text;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  /* background-color: var(--main-red-edgerunners); */
+}
+.input {
+  grid-area: input;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--main-red-edgerunners);
+}
+
+#videobox {
+  padding: 10px;
+  background-color: black;
+}
+
+#logo-left {
+  margin-top: 5px;
+  margin-left: 5px;
+  height: auto;
+  width: 300px;
+  display: flex;
+  justify-content: start;
+  margin: 10px;
+}
+
+#menu-right {
+  margin-right: 10px;
+  margin-top: 15px;
+  width: auto;
+  height: 38px;
+  /* background-image: linear-gradient(to top, var(--main-yellow), black); */
+  padding: 6px;
+  background-color: rgba(255, 255, 110, 0.2);
+  border-radius: 5px;
+}
+#menu-right button {
+  /* background: none; */
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1.5px solid var(--main-yellow);
+  border-radius: 3px;
+  color: yellow;
+  margin-left: 2px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#menu-right button:hover {
+  background-color: var(--main-red-edgerunners);
+  /* color: red; */
+}
+
+#podpis {
+  margin: 10px;
+  /* margin-right: 50px; */
+  font-size: 30px;
+  text-shadow: 2px 3px red;
+  background-color: var(--main-dark-yellow);
+  padding: 3px;
+  border-radius: 5px;
+}
