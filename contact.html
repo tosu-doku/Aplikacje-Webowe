@@ -23,28 +23,81 @@
               alt="cyberpunk_logo"
             />
           </div>
-          <div id="menu-right">
-            <button id="HOME-button">HOME</button
-            ><button id="CONTACT-button">CONTACT</button
-            ><button id="GALLERY-button">GALLERY</button>
-          </div>
+          <nav class="menu-right2">
+            <ul>
+              <li>
+                <a href="home.html"><button id="HOME-button">HOME</button></a>
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><button id="CONTACT-button">CONTACT</button></a
+                >
+              </li>
+              <li>
+                <a href="gallery.html"
+                  ><button id="GALLERY-button">GALLERY</button></a
+                >
+              </li>
+            </ul>
+          </nav>
         </div>
         <!-- end of header -->
 
-        <!-- <div class="container"> -->
-        <div class="text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-          laborum a corporis magnam voluptas voluptatibus consectetur eos illo,
-          dicta consequatur omnis in provident atque dolorum necessitatibus ea
-          quas magni soluta!
-        </div>
+        <!-- <div class="text"></div> -->
         <div class="input">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-          laborum a corporis magnam voluptas voluptatibus consectetur eos illo,
-          dicta consequatur omnis in provident atque dolorum necessitatibus ea
-          quas magni soluta!
+          <form>
+            <label for="name"> Name </label>
+            <input
+              name="name"
+              minlength="3"
+              placeholder="David Martinez"
+              required
+            />
+            <br />
+            <label> E-mail address </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="DavidMartinez@arasaka.uni.com"
+              required
+            />
+
+            <br />
+            <label> Select subject </label>
+            <select name="subject" id="subject" required>
+              <option value="None">None</option>
+              <option value="ad">Advertisement</option>
+              <option value="event">Events</option>
+              <option value="employment">Employment at CDPR</option>
+              <option value="other">Other</option>
+            </select>
+
+            <br />
+            <label for="message"> Message </label>
+            <textarea
+              name="message"
+              placeholder="Type your message here"
+              rows="5"
+            ></textarea>
+            <br />
+            <input type="submit" id="submit-button" />
+          </form>
         </div>
-        <!-- </div> -->
+        <div class="text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis
+          alias, fugiat est deleniti dicta nulla, aliquam blanditiis mollitia
+          pariatur neque asperiores debitis porro quaerat laudantium? Eius
+          beatae officia necessitatibus optio?
+          <br />
+          <br />
+          <div>
+            <img
+              src="assets/lucy-phone-call.jpg"
+              width="450px"
+              id="yellow-border"
+            />
+          </div>
+        </div>
 
         <!-- footer -->
         <div class="footer">
@@ -52,7 +105,7 @@
         </div>
       </div>
     </div>
+    <!-- </div> -->
   </body>
   <script src="/Aplikacje-Webowe/assets/index.js"></script>
-  <script src="/Aplikacje-Webowe/assets/clock.js"></script>
 </html>

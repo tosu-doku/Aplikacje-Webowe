@@ -49,9 +49,16 @@ body.contact-body .container {
   grid-template-columns: auto auto;
   grid-template-areas:
     "header header"
-    "text input"
+    "input text"
     "footer footer";
 }
+
+/* body.contact-body .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
 .container div.header {
   grid-area: header;
   text-align: center;
@@ -63,6 +70,43 @@ body.contact-body .container {
   margin: 0;
   display: flex;
   justify-content: space-between;
+}
+
+.menu-right2 {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-right: 10px;
+  margin-top: 15px;
+  width: auto;
+  /* background-image: linear-gradient(to top, var(--main-yellow), black); */
+  padding: 6px;
+  /* background-color: rgba(255, 255, 110, 0.2); */
+  border-radius: 5px;
+  /* background: none; */
+}
+
+.menu-right2 button {
+  /* background: none; */
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1.5px solid var(--main-yellow);
+  border-radius: 3px;
+  color: yellow;
+  margin-left: 2px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.menu-right2 button:hover {
+  background-color: var(--main-red-edgerunners);
+}
+.menu-right2 ul {
+  display: flex;
+}
+.menu-right2 li {
+  width: auto;
+  height: auto;
 }
 
 .container div.content {
@@ -93,6 +137,7 @@ body.contact-body .container {
 }
 .container div.video {
   grid-area: video;
+  /* border: 5px solid var(--main-dark-yellow); */
   margin: 10px;
   padding: 10px;
   text-align: center;
@@ -148,9 +193,6 @@ body.contact-body .container {
 }
 
 /* contact */
-/* .containter-contact {
-  
-} */
 .text {
   grid-area: text;
   margin: 10px;
@@ -160,13 +202,42 @@ body.contact-body .container {
 }
 .input {
   grid-area: input;
+  display: flex;
+  /* transform: translateX(50px); */
+  margin: auto;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 50%;
+  min-width: 500px;
+  height: 100%;
   margin: 10px;
   padding: 10px;
   text-align: center;
   background-color: var(--main-red-edgerunners);
+  border: 5px solid var(--main-dark-yellow);
+  border-radius: 10px;
+}
+.input form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input input,
+.input select,
+.input textarea {
+  width: 90%;
+  border: 2px solid black;
+  border-radius: 2px;
+  font-family: inherit;
+}
+#submit-button {
+  background-color: var(--main-yellow);
 }
 
 #videobox {
+  /* border: 5px solid black; */
   padding: 10px;
   background-color: black;
 }
@@ -181,39 +252,35 @@ body.contact-body .container {
   margin: 10px;
 }
 
-#menu-right {
-  margin-right: 10px;
-  margin-top: 15px;
-  width: auto;
-  height: 38px;
-  /* background-image: linear-gradient(to top, var(--main-yellow), black); */
-  padding: 6px;
-  background-color: rgba(255, 255, 110, 0.2);
-  border-radius: 5px;
-}
-#menu-right button {
-  /* background: none; */
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1.5px solid var(--main-yellow);
-  border-radius: 3px;
-  color: yellow;
-  margin-left: 2px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-#menu-right button:hover {
+/* #menu-right button:hover {
   background-color: var(--main-red-edgerunners);
-  /* color: red; */
-}
+} */
 
 #podpis {
   margin: 10px;
-  /* margin-right: 50px; */
   font-size: 30px;
   text-shadow: 2px 3px red;
   background-color: var(--main-dark-yellow);
   padding: 3px;
   border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: inherit;
+}
+
+#yellow-border {
+  border: 5px solid var(--main-dark-yellow);
+  border-radius: 10px;
+}
+#yellow-border-right {
+  border-right: 5px solid var(--main-dark-yellow);
+  padding: 5px;
+}
+#yellow-border-left {
+  border-left: 5px solid var(--main-dark-yellow);
+  padding: 5px;
 }
