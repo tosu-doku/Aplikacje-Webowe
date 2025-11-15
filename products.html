@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="products_table_filter.js"></script>
+  </head>
+  <body>
+    <input type="text" id="filter" placeholder="> filter items here <" />
+    | sort by:
+    <select name="sort by" id="sort-by">
+      <option value="none">None</option>
+      <option value="price_asc">price asc</option>
+      <option value="price_desc">price desc</option>
+      <option value="rating">rating desc</option>
+    </select>
+    <table
+      id="table"
+      style="
+        width: 100%;
+        border: black solid 2px;
+        background-color: beige;
+        margin: 5px;
+      "
+    ></table>
+  </body>
+</html>
