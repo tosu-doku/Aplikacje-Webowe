@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="jersey-10-regular">
+    <canvas id="board"></canvas>
+    <button id="restartBtn" ">Try Again</button>
+    <div id="scoreTable" >
+      <h3 style="margin-top:5px">>> Highscores <<</h3>
+      <ul id="highscoresList"></ul>
+
+      <h3> Your score </h3>
+      <ul id="currentScore"></ul>
+    </div>
+
+    <audio id="flap" src="assets/Sound Efects/wing.ogg"></audio>
+  </body>
+  <script type="module" src="game.js"></script>
+</html>
