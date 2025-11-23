@@ -179,6 +179,7 @@ function startGame(keyevent) {
   if (keyevent.code == "Space" || keyevent.type === "touchstart") {
     console.log("game started");
     document.removeEventListener("keydown", startGame);
+    document.removeEventListener("touchstart", startGame);
 
     gameOver = false;
     gameOverHard = false;
@@ -391,8 +392,8 @@ function placePowerup() {
 
 function moveBird(keyevent) {
   if (keyevent.code == "Space" || keyevent.type == "touchstart") {
-    velocityY = -5;
     if (!gameOver) {
+      velocityY = -5;
       birdFlap();
     }
   }
