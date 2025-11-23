@@ -166,6 +166,7 @@ window.onload = function () {
 
   // wait for click
   document.addEventListener("keydown", startGame);
+  document.addEventListener("touchstart", startGame);
 
   this.requestAnimationFrame(update);
   this.setInterval(placePipes, PIPES_SPAWN_RATE);
@@ -175,7 +176,7 @@ window.onload = function () {
 };
 
 function startGame(keyevent) {
-  if (keyevent.code == "Space") {
+  if (keyevent.code == "Space" || keyevent.type === "touchstart") {
     console.log("game started");
     document.removeEventListener("keydown", startGame);
 
@@ -184,6 +185,7 @@ function startGame(keyevent) {
 
     // this.setInterval(birdAnimation, 2000);
     document.addEventListener("keydown", moveBird);
+    document.addEventListener("touchstart", moveBird);
   }
 }
 
@@ -388,7 +390,7 @@ function placePowerup() {
 }
 
 function moveBird(keyevent) {
-  if (keyevent.code == "Space") {
+  if (keyevent.code == "Space" || keyevent.type == "touchstart") {
     velocityY = -5;
     if (!gameOver) {
       birdFlap();
