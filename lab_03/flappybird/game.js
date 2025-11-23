@@ -228,6 +228,8 @@ function update() {
       gameOver == false &&
       powerupActive == false
     ) {
+      document.removeEventListener("keydown", moveBird);
+      document.removeEventListener("touchstart", moveBird);
       gameOver = true;
       // velocityY -= 4;
       newScore(score);
@@ -476,6 +478,8 @@ function restartGame() {
   gameOver = false;
   gameOverHard = false;
   restartBtn.removeEventListener("click", restartGame);
+  document.addEventListener("keydown", moveBird);
+  document.addEventListener("touchstart", moveBird);
 }
 
 export { context };
