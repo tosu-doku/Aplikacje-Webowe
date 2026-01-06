@@ -13,13 +13,11 @@ import "./App.css";
 // import StudentManager from "./components/studenci/StudentManager";
 //zad 6
 // import Licznik from "./components/efekty/Licznik";
-import Tytul from "./components/efekty/Tytul";
-
-// import Przyklad7 from "./components/Przyklad7";
+// import Tytul from "./components/efekty/Tytul";
+import Odliczanie from "./components/efekty/Odliczanie";
 
 function App() {
-  // return <Przyklad7 />;
-  return <Tytul />;
+  return <Odliczanie />;
 }
 
 export default App;
