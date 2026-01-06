@@ -7,12 +7,13 @@ import Przyklad7 from "./components/Przyklad7";
 // import Hasla from "./components/formularze/Haslo";
 // import Logowanie from "./components/formularze/Logowanie";
 //zad 4
-import Ternary from "./components/inne/Ternary";
-import Aktualizacja from "./components/inne/Aktualizacja";
+// import Ternary from "./components/inne/Ternary";
+// import Aktualizacja from "./components/inne/Aktualizacja";
+import Studenci from "./components/studenci/Studenci";
 
 function App() {
   // return <Przyklad7 />;
-  return <Aktualizacja />;
+  return <Studenci />;
 }
 
 export default App;
