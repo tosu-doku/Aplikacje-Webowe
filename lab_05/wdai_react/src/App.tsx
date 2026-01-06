@@ -9,11 +9,16 @@ import Przyklad7 from "./components/Przyklad7";
 //zad 4
 // import Ternary from "./components/inne/Ternary";
 // import Aktualizacja from "./components/inne/Aktualizacja";
-import Studenci from "./components/studenci/Studenci";
+// import Studenci from "./components/studenci/Studenci";
+import StudentManager from "./components/studenci/StudentManager";
 
 function App() {
   // return <Przyklad7 />;
-  return <Studenci />;
+  return (
+    <>
+      <StudentManager />
+    </>
+  );
 }
 
 export default App;
