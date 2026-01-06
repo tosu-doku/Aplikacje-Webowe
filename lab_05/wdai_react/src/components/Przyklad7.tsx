@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 /*
 Przykład tzw. kontrolowanego inputa
@@ -8,17 +8,22 @@ dzieki czemu w stanie cały czas mamy najświeższą inforamację o wartości in
 */
 
 const Przyklad7 = () => {
-    const [tekst, setTekst] = useState("")
+  const [tekst, setTekst] = useState("");
 
-    return (
-        <div>
-            Tekst z inputa: <b>{tekst}</b>
-            <br /><br />
-            <input type="text" value={tekst} onChange={(e) => {
-                setTekst(e.target.value)
-            }}/>
-        </div>
-    );
+  return (
+    <div>
+      Tekst z inputa: <b>{tekst}</b>
+      <br />
+      <br />
+      <input
+        type="text"
+        value={tekst}
+        onChange={(e) => {
+          setTekst(e.target.value);
+        }}
+      />
+    </div>
+  );
 };
 
 export default Przyklad7;

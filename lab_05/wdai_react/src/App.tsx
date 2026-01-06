@@ -12,13 +12,14 @@ import "./App.css";
 // import Studenci from "./components/studenci/Studenci";
 // import StudentManager from "./components/studenci/StudentManager";
 //zad 6
-import Licznik from "./components/efekty/Licznik";
+// import Licznik from "./components/efekty/Licznik";
+import Tytul from "./components/efekty/Tytul";
 
 // import Przyklad7 from "./components/Przyklad7";
 
 function App() {
   // return <Przyklad7 />;
-  return <Licznik />;
+  return <Tytul />;
 }
 
 export default App;
