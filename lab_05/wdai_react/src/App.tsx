@@ -1,5 +1,4 @@
 import "./App.css";
-import Przyklad7 from "./components/Przyklad7";
 // import { Koszyk, NowyKoszyk } from "./components/koszyk/zadanie1";
 // import { Licznik, NowyLicznik } from "./components/liczniki/zadanie2";
 //zad 3
@@ -9,16 +8,17 @@ import Przyklad7 from "./components/Przyklad7";
 //zad 4
 // import Ternary from "./components/inne/Ternary";
 // import Aktualizacja from "./components/inne/Aktualizacja";
+//zad 5
 // import Studenci from "./components/studenci/Studenci";
-import StudentManager from "./components/studenci/StudentManager";
+// import StudentManager from "./components/studenci/StudentManager";
+//zad 6
+import Licznik from "./components/efekty/Licznik";
+
+// import Przyklad7 from "./components/Przyklad7";
 
 function App() {
   // return <Przyklad7 />;
-  return (
-    <>
-      <StudentManager />
-    </>
-  );
+  return <Licznik />;
 }
 
 export default App;
