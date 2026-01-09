@@ -1,4 +1,5 @@
 import "./App.css";
+import Komentarz from "./components/produkty/Komentarz";
 // import { Koszyk, NowyKoszyk } from "./components/koszyk/zadanie1";
 // import { Licznik, NowyLicznik } from "./components/liczniki/zadanie2";
 //zad 3
@@ -14,10 +15,33 @@ import "./App.css";
 //zad 6
 // import Licznik from "./components/efekty/Licznik";
 // import Tytul from "./components/efekty/Tytul";
-import Odliczanie from "./components/efekty/Odliczanie";
+// import Odliczanie from "./components/efekty/Odliczanie";
+//zad 7
 
 function App() {
-  return <Odliczanie />;
+  return (
+    <>
+      {" "}
+      <Komentarz
+        {...{
+          id: 1,
+          body: "treść komentarza do posta",
+          postId: 123,
+          likes: 12,
+          user: { id: 1, username: "użytkownik", fullname: "Jan Kowalski" },
+        }}
+      />
+      <Komentarz
+        {...{
+          id: 2,
+          body: "treść komentarza do posta 2",
+          postId: 123,
+          likes: 38,
+          user: { id: 1, username: "użytkownik", fullname: "Jan Kowalski" },
+        }}
+      />
+    </>
+  );
 }
 
 export default App;

@@ -2,9 +2,43 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
 body {
   background-color: rgb(0, 41, 68);
+}
+
+.Comment {
+  margin: 1em;
+  padding: 1em;
+  border: solid black 2px;
+  border-radius: 1em;
+  background-color: #003e68;
+}
+.CommentText {
+  margin: 0.5em 0em;
+  padding: 0em 0.25em;
+}
+
+.CommentAuthor {
+  font-size: larger;
+  /* margin: 0.5em 0em; */
+  padding: 0em 0.25em;
+  /* border: solid black 2px; */
+  border-radius: 1em;
+  background-color: #004e82;
+  display: inline-block;
+}
+
+.CommentLikes {
+  display: flex;
+  justify-content: end; /* horizotal */
+  gap: 10px;
+  align-items: center; /*vertical*/
+}
+
+.CommentLikes button {
+  background-color: rgb(0, 0, 0);
+  padding: 0.25em;
 }
