@@ -41,4 +41,5 @@ const Komentarz = (comment: Comment) => {
   );
 };
 
-export default Komentarz;
+export { Komentarz };
+export type { Comment };
