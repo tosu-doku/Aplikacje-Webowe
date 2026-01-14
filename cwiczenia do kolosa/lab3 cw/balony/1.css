@@ -1,0 +1,10 @@
+#balon {
+  width: 100px;
+  transition: 2s;
+  /* flex-wrap: wrap; */
+  /* scale: 2; */
+}
+/* 
+#balon:hover {
+  width: 200px;
+} */
