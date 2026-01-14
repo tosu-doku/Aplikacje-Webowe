@@ -1,0 +1,27 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  /* text-align: center; */
+}
+
+:root {
+  --primary-bg-color-light: rgb(166, 220, 255);
+  --primary-bg-color-lighter: rgb(25, 115, 176);
+
+  --primary-bg-color-dark: rgb(0, 55, 92);
+  --primary-bg-color-darker: #002944;
+}
+
+body {
+  background-color: var(--primary-bg-color-lighter);
+  color: white;
+}
+
+/* .welcome-text {
+  font-size: larger;
+  background-color: var(--primary-bg-color-darker);
+  border-radius: 4px;
+  margin: 1px;
+  padding: 5px;
+} */
