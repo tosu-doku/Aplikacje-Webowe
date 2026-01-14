@@ -18,10 +18,6 @@ const Home = () => {
           <Box
             sx={{
               fontSize: 50,
-              textAlign: "center",
-              textDecoration: "underline",
-              textDecorationStyle: "dotted",
-              textDecorationColor: "aqua",
             }}
           >
             Hello and Welcome{" "}
