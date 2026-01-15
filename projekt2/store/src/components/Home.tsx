@@ -1,17 +1,21 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
+import CategoriesForSelection from "./CategoriesForSelection";
 
 const Home = () => {
   return (
-    <Container>
+    <Container sx={{ bgcolor: "primary.main", pt: 1 }}>
       <Box
         className="welcome-text"
         sx={{
           border: 3,
           borderRadius: 2,
-          m: 2,
-          p: 2,
+          mx: 2,
+          mt: 1,
+          p: 1.5,
           bgcolor: "secondary.main",
+          mb: 5,
+          borderBottomStyle: "dashed",
         }}
       >
         <Typography variant="h5" sx={{ textAlign: "center" }}>
@@ -20,11 +24,16 @@ const Home = () => {
               fontSize: 50,
             }}
           >
-            Hello and Welcome{" "}
+            Welcome{" "}
           </Box>{" "}
-          to our online store, here you can browse all kinds of products!
         </Typography>
       </Box>
+      <Typography variant="h5" sx={{ textAlign: "center" }}>
+        {" "}
+        to our online store, where you can browse all kinds of products!
+      </Typography>
+      <br />
+      <CategoriesForSelection />
     </Container>
   );
 };

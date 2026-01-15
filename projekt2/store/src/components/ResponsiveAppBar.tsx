@@ -11,15 +11,33 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+
+import SvgIcon from "@mui/material/SvgIcon";
+import type { SvgIconProps } from "@mui/material/SvgIcon";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+function HomeIcon(props: SvgIconProps) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
 
 import { Link } from "react-router-dom";
 
 const pages = [
-  { name: "Home", path: "/" },
-  { name: "Products", path: "/products" },
-  { name: "About", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  // { name: "Home", path: "/" },
+  // { name: "Products", path: "/products" },
+  { name: "About Us", path: "/about" },
+  { name: "Cart", path: "/cart" },
+];
+
+const productCategories = [
+  "women's clothing",
+  "men's clothing",
+  "jewelery",
+  "electronics",
 ];
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -31,6 +49,8 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+  const [anchorElProducts, setAnchorElProducts] =
+    React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -38,13 +58,18 @@ function ResponsiveAppBar() {
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
+  const handleOpenProductsMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElProducts(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+  const handleCloseProductsMenu = () => {
+    setAnchorElProducts(null);
   };
 
   return (
@@ -63,7 +88,6 @@ function ResponsiveAppBar() {
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
-              textDecoration: "none",
             }}
           >
             MOCK STORE
@@ -97,6 +121,13 @@ function ResponsiveAppBar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
+              <MenuItem
+                onClick={handleCloseNavMenu}
+                component={Link}
+                to="/products"
+              >
+                <Typography>all products</Typography>
+              </MenuItem>
               {pages.map((page) => (
                 <MenuItem
                   key={page.name}
@@ -104,7 +135,7 @@ function ResponsiveAppBar() {
                   component={Link}
                   to={page.path}
                 >
-                  <Typography textAlign="center">{page.name}</Typography>
+                  <Typography>{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -123,7 +154,6 @@ function ResponsiveAppBar() {
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
-              textDecoration: "none",
             }}
           >
             MOCK STORE
@@ -137,6 +167,66 @@ function ResponsiveAppBar() {
               gap: 1,
             }}
           >
+            <Button
+              onClick={handleCloseNavMenu}
+              component={Link}
+              to="/"
+              sx={{
+                my: 2,
+                color: "white",
+                bgcolor: "secondary.main",
+                display: "flex",
+              }}
+              startIcon={<HomeIcon fontSize="small" />}
+              variant="contained"
+            >
+              Home
+              {/* <HomeIcon fontSize="small" /> */}
+            </Button>
+
+            <Box sx={{ flexGrow: 0 }}>
+              <Button
+                onClick={handleOpenProductsMenu}
+                sx={{
+                  my: 2,
+                  color: "white",
+                  bgcolor: "secondary.main",
+                  display: "block",
+                }}
+                variant="contained"
+              >
+                Products
+              </Button>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-products"
+                anchorEl={anchorElProducts}
+                anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                keepMounted
+                transformOrigin={{ vertical: "top", horizontal: "left" }}
+                open={Boolean(anchorElProducts)}
+                onClose={handleCloseProductsMenu}
+              >
+                <MenuItem
+                  component={Link}
+                  to="/products"
+                  onClick={handleCloseProductsMenu}
+                >
+                  <Typography>all products</Typography>
+                </MenuItem>
+                {productCategories.map((category) => (
+                  <MenuItem
+                    key={category}
+                    component={Link}
+                    to={`/products/${category}`}
+                    onClick={handleCloseProductsMenu}
+                  >
+                    <Typography>{category}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+
             {pages.map((page) => (
               <Button
                 key={page.name}
@@ -181,7 +271,7 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography>{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>

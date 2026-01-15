@@ -7,21 +7,19 @@ import {
   // useParams,
   // useNavigate,
 } from "react-router-dom";
-import axios from "axios";
-
-import Home from "./components/Home";
-import About from "./components/About";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+import Home from "./components/Home";
+import About from "./components/About";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
-// import { Product } from "./components/Product";
 import Products from "./components/Products";
+import Cart from "./components/Cart";
 
 declare module "@mui/material/styles" {
   // dodanie własnego koloru special blue
   interface Palette {
-    specialBlue: Palette["primary"]; // Mówimy: specialBlue zachowuje się jak primary
+    specialBlue: Palette["primary"];
   }
   interface PaletteOptions {
     specialBlue?: PaletteOptions["primary"];
@@ -39,7 +37,7 @@ const theme = createTheme({
       main: "#002944",
     },
     specialBlue: {
-      main: "#002944",
+      main: "#1ba4ffff",
       contrastText: "#000000", // Kolor tekstu na tym tle
     },
   },
@@ -55,9 +53,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products/:filter?" element={<Products />} />
 
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

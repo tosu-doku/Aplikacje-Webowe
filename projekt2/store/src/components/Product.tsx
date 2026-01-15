@@ -1,7 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import { Alert, Box, Snackbar, Typography } from "@mui/material";
+import type { SnackbarCloseReason } from "@mui/material/Snackbar";
+
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { pink } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 interface Rating {
   rate: number;
@@ -13,16 +16,58 @@ interface ProductInterface {
   title: string;
   price: number;
   description: string;
-  category: number;
+  category: string;
   image: string;
   rating: Rating;
+  amount?: number;
 }
+
+interface CartInterface extends ProductInterface {
+  amount: number;
+}
+
 const Product = (product: ProductInterface) => {
   // const navigate = useNavigate();
 
   // const handleProductClick = () => {
   //   navigate(`/product/${product.id}`);
   // };
+
+  const [alertVisible, setAlertVisible] = useState<boolean>(false);
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setAlertVisible(false);
+  };
+
+  const handleAddToCart = () => {
+    const existingCart = localStorage.getItem("ProductsInCart");
+
+    let cartArray: CartInterface[] = existingCart
+      ? JSON.parse(existingCart)
+      : [];
+
+    const existingProductIndex = cartArray.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      cartArray[existingProductIndex].amount += 1;
+      console.log("dodano: ", product.title);
+    } else {
+      cartArray.push({ ...product, amount: 1 });
+      console.log("nowy: ", product.title);
+    }
+
+    localStorage.setItem("ProductsInCart", JSON.stringify(cartArray));
+    setAlertVisible(true);
+  };
   return (
     <Box
       className="Product"
@@ -94,8 +139,9 @@ const Product = (product: ProductInterface) => {
             alignItems: "center",
           }}
         >
-          <Typography variant="body1">Cena: {product.price} zł</Typography>
+          <Typography variant="body1">Price: {product.price} zł</Typography>
           <AddShoppingCartIcon
+            onClick={handleAddToCart}
             sx={{
               color: pink[500],
               border: 2,
@@ -112,15 +158,33 @@ const Product = (product: ProductInterface) => {
             }}
           />
         </Box>
+        <Typography sx={{ color: "black" }}>
+          {product.amount ? `Amount in Cart: ${product.amount}` : ""}
+        </Typography>
       </Box>
       {/* <Box className="ProductDescription" sx={{ my: 2, mx: 1 }}>
         <Typography variant="body1">{product.description}</Typography>
       </Box> */}
 
       <Box className="ProductRating"></Box>
+
+      <Snackbar
+        open={alertVisible}
+        autoHideDuration={5000}
+        onClose={handleClose}
+      >
+        <Alert
+          severity="success"
+          variant="filled"
+          onClose={handleClose}
+          sx={{ width: "100%" }}
+        >
+          Dodano do koszyka: {product.title}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
 
 export { Product };
-export type { ProductInterface };
+export type { ProductInterface, CartInterface };
