@@ -1,6 +1,6 @@
-= Prosty sklep internetowy
+# Prosty sklep internetowy
 
-Prosta i responsywna aplikacja imitująca sklep internetowy zbudowana w oparciu o _React_ oraz _Material UI_.
+Prosta i responsywna aplikacja imitująca sklep internetowy zbudowana w oparciu o **React** oraz **Material UI**.
 
 Aplikacja pobiera dane o produktach z zewnętrznego API, wyświetlając je na podstronie /products.
 Produkty są podzielone na kategorie co ułatwia znalezienie porządanego produktu przez klienta.
