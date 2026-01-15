@@ -69,15 +69,10 @@ const Cart = () => {
               return (
                 <Grid
                   key={product.id}
-                  size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+                  size={{ xs: 12, sm: 4, md: 4, lg: 3 }}
                   sx={{ display: "flex", justifyContent: "center" }}
                 >
-                  <Box sx={{ overflow: "hidden" }}>
-                    <ProductInCart
-                      {...product}
-                      onRemove={handleRemoveFromCart}
-                    />
-                  </Box>
+                  <ProductInCart {...product} onRemove={handleRemoveFromCart} />
                 </Grid>
               );
             })

@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import SvgIcon from "@mui/material/SvgIcon";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 
 function HomeIcon(props: SvgIconProps) {
   return (
@@ -191,8 +192,9 @@ function ResponsiveAppBar() {
                   my: 2,
                   color: "white",
                   bgcolor: "secondary.main",
-                  display: "block",
+                  display: "flex",
                 }}
+                startIcon={<ShoppingBagIcon fontSize="small" />}
                 variant="contained"
               >
                 Products
@@ -237,8 +239,9 @@ function ResponsiveAppBar() {
                   my: 2,
                   color: "white",
                   bgcolor: "secondary.main",
-                  display: "block",
+                  display: "flex",
                 }}
+                startIcon={<ShoppingCartIcon fontSize="small" />}
                 variant="contained"
               >
                 {page.name}
