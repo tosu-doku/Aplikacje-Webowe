@@ -5,68 +5,19 @@ import type {
 } from "@mui/material/Snackbar";
 
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import { pink } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import type { ProductInterface } from "./Product";
 
-interface Rating {
-  rate: number;
-  count: number;
-}
-
-interface ProductInterface {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: Rating;
-}
-
-interface CartInterface extends ProductInterface {
+interface CartInterfaceWithRemove extends ProductInterface {
   amount: number;
+  onRemove: (id: number, title: string) => void;
 }
 
-const ProductInCart = (product: CartInterface) => {
-  const [alertVisible, setAlertVisible] = useState<boolean>(false);
+const ProductInCart = (productWithRemove: CartInterfaceWithRemove) => {
+  const { onRemove, ...product } = productWithRemove;
 
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setAlertVisible(false);
-  };
-
-  const handleRemoveItem = () => {
-    const existingCart = localStorage.getItem("ProductsInCart");
-
-    let cartArray: CartInterface[] = existingCart
-      ? JSON.parse(existingCart)
-      : [];
-
-    const existingProductIndex = cartArray.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (existingProductIndex !== -1) {
-      cartArray[existingProductIndex].amount -= 1;
-      console.log("removed item from cart: ", product.title);
-    } else {
-      console.log("user trying to remove an item not in cart: ", product.title);
-    }
-
-    localStorage.setItem("ProductsInCart", JSON.stringify(cartArray));
-    setAlertVisible(true);
-  };
   return (
     <Box
       className="Product"
-      // onClick={handleProductClick}
       sx={{
         width: "100%",
         height: "100%",
@@ -136,7 +87,7 @@ const ProductInCart = (product: CartInterface) => {
         >
           <Typography variant="body1">Price: {product.price} zł</Typography>
           <RemoveShoppingCartIcon
-            onClick={handleRemoveItem}
+            onClick={() => onRemove(product.id, product.title)}
             sx={{
               color: "red",
               border: 2,
@@ -159,25 +110,8 @@ const ProductInCart = (product: CartInterface) => {
       </Box>
 
       <Box className="ProductRating"></Box>
-
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "left" }}
-        open={alertVisible}
-        autoHideDuration={5000}
-        onClose={handleClose}
-      >
-        <Alert
-          severity="error"
-          variant="filled"
-          onClose={handleClose}
-          sx={{ width: "80%" }}
-        >
-          Usunięto z koszyka: {product.title}
-        </Alert>
-      </Snackbar>
     </Box>
   );
 };
 
 export { ProductInCart };
-export type { CartInterface };
