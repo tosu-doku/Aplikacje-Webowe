@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+= Prosty sklep internetowy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Prosta i responsywna aplikacja imitująca sklep internetowy zbudowana w oparciu o _React_ oraz _Material UI_.
 
-Currently, two official plugins are available:
+Aplikacja pobiera dane o produktach z zewnętrznego API, wyświetlając je na podstronie /products.
+Produkty są podzielone na kategorie co ułatwia znalezienie porządanego produktu przez klienta.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Produkty można dodawać i usuwać z koszyka. W koszyku znajdziemy sumę cen produktów.
 
-## React Compiler
+🛠️ Technologie
+React 19.2 + TypeScript
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Material UI (MUI) – komponenty i system stylowania sx
 
-## Expanding the ESLint configuration
+React Router – nawigacja
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Axios – komunikacja z API
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+💻 Instalacja i uruchomienie
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Sklonuj repozytorium:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```Bash
+
+git clone [link-do-repozytorium]
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Zainstaluj zależności:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```Bash
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+npm install
+```
+
+3. Uruchom aplikację w trybie deweloperskim:
+
+```Bash
+
+npm start
 ```
