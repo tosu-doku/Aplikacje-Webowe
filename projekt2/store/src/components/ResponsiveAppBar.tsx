@@ -29,7 +29,7 @@ import { Link } from "react-router-dom";
 const pages = [
   // { name: "Home", path: "/" },
   // { name: "Products", path: "/products" },
-  { name: "About Us", path: "/about" },
+  // { name: "About Us", path: "/about" },
   { name: "Cart", path: "/cart" },
 ];
 

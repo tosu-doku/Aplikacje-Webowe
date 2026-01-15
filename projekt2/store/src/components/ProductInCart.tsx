@@ -1,8 +1,12 @@
 import { Alert, Box, Snackbar, Typography } from "@mui/material";
-import type { SnackbarCloseReason } from "@mui/material/Snackbar";
+import type {
+  SnackbarCloseReason,
+  SnackbarOrigin,
+} from "@mui/material/Snackbar";
 
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { pink } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 interface Rating {
@@ -18,20 +22,13 @@ interface ProductInterface {
   category: string;
   image: string;
   rating: Rating;
-  amount?: number;
 }
 
 interface CartInterface extends ProductInterface {
   amount: number;
 }
 
-const Product = (product: ProductInterface) => {
-  // const navigate = useNavigate();
-
-  // const handleProductClick = () => {
-  //   navigate(`/product/${product.id}`);
-  // };
-
+const ProductInCart = (product: CartInterface) => {
   const [alertVisible, setAlertVisible] = useState<boolean>(false);
 
   const handleClose = (
@@ -45,7 +42,7 @@ const Product = (product: ProductInterface) => {
     setAlertVisible(false);
   };
 
-  const handleAddToCart = () => {
+  const handleRemoveItem = () => {
     const existingCart = localStorage.getItem("ProductsInCart");
 
     let cartArray: CartInterface[] = existingCart
@@ -57,11 +54,10 @@ const Product = (product: ProductInterface) => {
     );
 
     if (existingProductIndex !== -1) {
-      cartArray[existingProductIndex].amount += 1;
-      console.log("dodano: ", product.title);
+      cartArray[existingProductIndex].amount -= 1;
+      console.log("removed item from cart: ", product.title);
     } else {
-      cartArray.push({ ...product, amount: 1 });
-      console.log("nowy: ", product.title);
+      console.log("user trying to remove an item not in cart: ", product.title);
     }
 
     localStorage.setItem("ProductsInCart", JSON.stringify(cartArray));
@@ -139,10 +135,10 @@ const Product = (product: ProductInterface) => {
           }}
         >
           <Typography variant="body1">Price: {product.price} zł</Typography>
-          <AddShoppingCartIcon
-            onClick={handleAddToCart}
+          <RemoveShoppingCartIcon
+            onClick={handleRemoveItem}
             sx={{
-              color: pink[500],
+              color: "red",
               border: 2,
               bordercolor: "primary.main",
               borderRadius: 2,
@@ -151,7 +147,7 @@ const Product = (product: ProductInterface) => {
               transition: "0.3s",
               ":hover": {
                 boxShadow: 4,
-                bgcolor: pink[500],
+                bgcolor: "red",
                 color: "black",
               },
             }}
@@ -161,30 +157,27 @@ const Product = (product: ProductInterface) => {
           {product.amount ? `Amount in Cart: ${product.amount}` : ""}
         </Typography>
       </Box>
-      {/* <Box className="ProductDescription" sx={{ my: 2, mx: 1 }}>
-        <Typography variant="body1">{product.description}</Typography>
-      </Box> */}
 
       <Box className="ProductRating"></Box>
 
       <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{ vertical: "top", horizontal: "left" }}
         open={alertVisible}
         autoHideDuration={5000}
         onClose={handleClose}
       >
         <Alert
-          severity="success"
+          severity="error"
           variant="filled"
           onClose={handleClose}
           sx={{ width: "80%" }}
         >
-          Dodano do koszyka: {product.title}
+          Usunięto z koszyka: {product.title}
         </Alert>
       </Snackbar>
     </Box>
   );
 };
 
-export { Product };
-export type { ProductInterface, CartInterface };
+export { ProductInCart };
+export type { CartInterface };

@@ -11,7 +11,7 @@ import {
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Home from "./components/Home";
-import About from "./components/About";
+// import About from "./components/About";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
@@ -52,7 +52,7 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          {/* <Route path="/about" element={<About />} /> */}
           <Route path="/products/:filter?" element={<Products />} />
 
           <Route path="/cart" element={<Cart />} />

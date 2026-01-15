@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Product, type CartInterface } from "./Product";
 import { Typography } from "@mui/material";
+import { ProductInCart } from "./ProductInCart";
 
 const Cart = () => {
   const existingCart = localStorage.getItem("ProductsInCart");
@@ -22,31 +23,34 @@ const Cart = () => {
     <Box sx={{ flexGrow: 1, p: 3 }}>
       <Typography variant="h3" sx={{ textAlign: "center" }}>
         Total cart value: {totalPrice} zł
+        <Typography variant="h2">REMOVE FROM CART</Typography>
       </Typography>{" "}
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {cartArray.map((product) => {
-          countUpPrice = countUpPrice + product.amount * product.price;
-          console.log(countUpPrice);
-          return (
-            <Grid
-              key={product.id}
-              size={{ xs: 12, sm: 4, md: 4, lg: 3 }}
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
-              <Box sx={{ overflow: "hidden" }}>
-                {" "}
-                {/* <Typography variant="h5" sx={{ color: "black" }}>
+        {cartArray
+          .filter((product) => product.amount > 0)
+          .map((product) => {
+            countUpPrice = countUpPrice + product.amount * product.price;
+            console.log(countUpPrice);
+            return (
+              <Grid
+                key={product.id}
+                size={{ xs: 12, sm: 4, md: 4, lg: 3 }}
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
+                <Box sx={{ overflow: "hidden" }}>
+                  {" "}
+                  {/* <Typography variant="h5" sx={{ color: "black" }}>
                   Amount: {product.amount}
                 </Typography> */}
-                <Product {...product} />
-              </Box>
-            </Grid>
-          );
-        })}
+                  <ProductInCart {...product} />
+                </Box>
+              </Grid>
+            );
+          })}
       </Grid>
     </Box>
   );
